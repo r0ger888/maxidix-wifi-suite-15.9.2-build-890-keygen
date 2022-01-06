@@ -157,7 +157,6 @@ LOCAL ps:PAINTSTRUCT
 		.elseif eax == IDB_ABOUT
 			invoke DialogBoxParam,0,IDD_ABOUT,hDlg,offset AboutProc,0
 		.elseif eax == IDB_EXIT
-			;invoke FadeOut,hDlg
 			invoke SendMessage,hDlg,WM_CLOSE,0,0
 		.endif 
              
@@ -170,40 +169,5 @@ LOCAL ps:PAINTSTRUCT
          xor eax,eax
          ret
 DlgProc endp
-
-FadeOut proc hWnd:HWND
-	mov Transparency,250
-@@:
-	invoke SetLayeredWindowAttributes,hWnd,0,Transparency,LWA_ALPHA
-	invoke Sleep,DELAY_VALUE
-	sub Transparency,5
-	cmp Transparency,0
-	jne @b
-	ret
-FadeOut endp
-
-MakeDialogTransparent proc _handle:dword,_transvalue:dword
-	
-	pushad
-	invoke GetModuleHandle,chr$("user32.dll")
-	invoke GetProcAddress,eax,chr$("SetLayeredWindowAttributes")
-	.if eax!=0
-		invoke GetWindowLong,_handle,GWL_EXSTYLE	;get EXSTYLE
-		
-		.if _transvalue==255
-			xor eax,WS_EX_LAYERED	;remove WS_EX_LAYERED
-		.else
-			or eax,WS_EX_LAYERED	;eax = oldstlye + new style(WS_EX_LAYERED)
-		.endif
-		
-		invoke SetWindowLong,_handle,GWL_EXSTYLE,eax
-		
-		.if _transvalue<255
-			invoke SetLayeredWindowAttributes,_handle,0,_transvalue,LWA_ALPHA
-		.endif	
-	.endif
-	popad
-	ret
-MakeDialogTransparent endp
 
 end start
