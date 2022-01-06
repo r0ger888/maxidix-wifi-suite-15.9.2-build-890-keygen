@@ -14,28 +14,24 @@ ELSEIFDEF USE_BMP
 	USE_IMAGE = 1		
 ENDIF					
 
-
 .const
 	aWidth			equ	400	
 	aHeight			equ	200	
-
 	aStandartDelayTime	equ	2000
-
-	aStartXPos			equ	17
-	aStartYPos			equ	10	
+	aStartXPos		equ	17
+	aStartYPos		equ	10	
 
 .data
 
-	ahDC			dd	0	
-	ahBmp			dd	0	
+	ahDC		dd	0	
+	ahBmp		dd	0	
 	
 	IFDEF USE_BRUSH			
-		ahBrush	dd	0	
+		ahBrush		dd	0	
 	ENDIF
 	
 	ahFont 		dd	0	
-  
-	aWnd			dd	0	
+	aWnd		dd	0	
 	aMainDC		dd	0	
 						
 
@@ -45,92 +41,74 @@ ENDIF
 	ENDIF
 
 	aThread		dd	0	
-
 	awords 		dd	0	
-
-	aGlobalStop		BOOL	FALSE	
-
-	aDelayTime		dd	0	
-	
-	aRandSeed		dd	0	
-	
-	aStartPos		dd	0	
-	aEndPos		dd	0	
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+	aGlobalStop	BOOL	FALSE	
+	aDelayTime	dd	0	
+	aRandSeed	dd	0	
+	aStartPos	dd	0	
+	aEndPos		dd	0						
 	astrLen		dd	0	
-
-
-	szaFontName		db	"terminal", 0			
-	szaTitle		db	"just another release", 0	
+	szaFontName	db	"terminal", 0			
+	szaTitle	db	"just another release", 0	
 	
-	szaText     db 13,13,13,13
-				db "[    pERYFERiAH tEAM pRESENTS yOU   ]",13,13
-				db "[       aNOTHER FiNE rELEASE        ]",8
-				db 13,13,13
-				db "[ keYgen by  : r0ger .............. ]",13
-				db "[ Target :                          ]",13
-				db "[ Maxidix Wifi Suite v15.9.2.b890 . ]",13
-				db "[ Date       : 22.12.2021 ......... ]",13
-				db "[ Protection : SHA-1 + BASE-64 .... ]",8
-				db 13,13,13,13
-				db "[ Sh0ut0utZ 2 : ................... ]",8
-				db 13,13,13
-				db "[ Wayfinder 4 CooL Music .......... ]",13
+	szaText    	db 13,13,13,13
+		    	db "[    pERYFERiAH tEAM pRESENTS yOU   ]",13,13
+		    	db "[       aNOTHER FiNE rELEASE        ]",8
+			db 13,13,13
+			db "[ keYgen by  : r0ger .............. ]",13
+			db "[ Target :                          ]",13
+			db "[ Maxidix Wifi Suite v15.9.2.b890 . ]",13
+			db "[ Date       : 22.12.2021 ......... ]",13
+			db "[ Protection : SHA-1 + BASE-64 .... ]",8
+			db 13,13,13,13
+			db "[ Sh0ut0utZ 2 : ................... ]",8
+			db 13,13,13
+			db "[ Wayfinder 4 CooL Music .......... ]",13
 		        db "[ x0man 4 CooL About Template ..... ]",13
 		        db "[ MagicH 4 MagicV2mEngine ......... ]",13
 		        db "[ Jowy 4 Modified Base64 Routine .. ]",13
 		        db "[ Xylitol 4 Suggestion ............ ]",8
-				db 13,13,13,13
-				db "[ GreetZ 2 :                        ]",8
-				db 13,13
-				db "[ B@TRyNU...................[ PRF ] ]",13
-				db "[ Al0hA.....................[ PRF ] ]",13
-				db "[ WeeGee....................[ PRF ] ]",13
-				db "[ yMRAN.....................[ PRF ] ]",13
-				db "[ r0bica....................[ PRF ] ]",13
-				db "[ ShTEFY....................[ PRF ] ]",13
-				db "[ DAViD.....................[ PRF ] ]",13
-				db "[ zzLaTaNN..................[ PRF ] ]",8
-				db 13,13
-				db "[ GRUiA.....................[ PRF ] ]",13
-				db "[ MaryNello.................[ PRF ] ]",13
-				db "[ s0r3l.....................[ PRF ] ]",13
-				db "[ sabYn.....................[ PRF ] ]",13
-				db "[ bDM10.....................[ PRF ] ]",13
-				db "[ oViSpider.................[ PRF ] ]",13
-				db "[ and other thugz ................. ]",8
-				db 13,13,13,13
-				db "[ but also:                         ]",8
-				db 13,13,13
-				db "[ Cachito....................[TSRh] ]",13
-				db "[ Talers.....................[TSRh] ]",13
-				db "[ Xylitol.....................[RED] ]",13
-				db "[ kao.............................. ]",13
-				db "[ and the whole exetools , TSRh.ws, ]",13
-				db "[ tuts4you,TC.in communities ...... ]",8
-				db 13,13,13,13
-				db "[       u can contact us at :       ]",8
-				db 13,13,13,13
-				db "[ mail    : prfteam@hush.com....... ]",13
-				db "[ ig      : @r0gerica.............. ]",13
-				db "[ discord : r0gerica#2649.......... ]",13
-				db "[ github  : r0gerica............... ]",8
-				db 13,13,13,13
-				db "[ or on telegram :  ............... ]",13,13
-				db "[ ................. t.me/r0ger888 . ]",8
-				db 13,13,13,13
-				db "[         fuck da cheaterz.         ]",13
-				db "[     fuck Carlos & Rajan Kumar.    ]",8,0
+			db 13,13,13,13
+			db "[ GreetZ 2 :                        ]",8
+			db 13,13
+			db "[ B@TRyNU...................[ PRF ] ]",13
+			db "[ Al0hA.....................[ PRF ] ]",13
+			db "[ WeeGee....................[ PRF ] ]",13
+			db "[ yMRAN.....................[ PRF ] ]",13
+			db "[ r0bica....................[ PRF ] ]",13
+			db "[ ShTEFY....................[ PRF ] ]",13
+			db "[ DAViD.....................[ PRF ] ]",13
+			db "[ zzLaTaNN..................[ PRF ] ]",8
+			db 13,13
+			db "[ GRUiA.....................[ PRF ] ]",13
+			db "[ MaryNello.................[ PRF ] ]",13
+			db "[ s0r3l.....................[ PRF ] ]",13
+			db "[ sabYn.....................[ PRF ] ]",13
+			db "[ bDM10.....................[ PRF ] ]",13
+			db "[ oViSpider.................[ PRF ] ]",13
+			db "[ and other thugz ................. ]",8
+			db 13,13,13,13
+			db "[ but also:                         ]",8
+			db 13,13,13
+			db "[ Cachito....................[TSRh] ]",13
+			db "[ Talers.....................[TSRh] ]",13
+			db "[ Xylitol.....................[RED] ]",13
+			db "[ kao.............................. ]",13
+			db "[ and the whole exetools , TSRh.ws, ]",13
+			db "[ tuts4you,TC.in communities ...... ]",8
+			db 13,13,13,13
+			db "[       u can contact us at :       ]",8
+			db 13,13,13,13
+			db "[ mail    : prfteam@hush.com....... ]",13
+			db "[ ig      : @r0gerica.............. ]",13
+			db "[ discord : r0gerica#2649.......... ]",13
+			db "[ github  : r0gerica............... ]",8
+			db 13,13,13,13
+			db "[ or on telegram :  ............... ]",13,13
+			db "[ ................. t.me/r0ger888 . ]",8
+			db 13,13,13,13
+			db "[         fuck da cheaterz.         ]",13
+			db "[     fuck Carlos & Rajan Kumar.    ]",8,0
 					
 
 .code
