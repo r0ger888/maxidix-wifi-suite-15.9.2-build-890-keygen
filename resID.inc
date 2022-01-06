@@ -32,13 +32,6 @@ include MagicV2mEngine.inc
 includelib MagicV2mEngine.lib
 
 DlgProc			PROTO	:DWORD,:DWORD,:DWORD,:DWORD
-StaticLineInit	PROTO	:DWORD
-FreeStatic		PROTO	:DWORD
-Drawz    		PROTO
-DrawLine		PROTO	:DWORD,:DWORD,:DWORD,:DWORD,:DWORD,:DWORD,:DWORD,:DWORD,:DWORD
-GraphShake		PROTO	:DWORD
-FadeOut			PROTO	:DWORD
-MakeDialogTransparent	PROTO	:DWORD,:DWORD
 
 .const
 IDD_MAIN	equ	1000
